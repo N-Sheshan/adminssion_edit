@@ -77,46 +77,210 @@
                         {{user.id}}
 
                     </td>
-                    <td>{{user.admissionNo}}</td>
-                    <td>{{user.admissionFor}}</td>
-                    <td>{{user.quota}}</td>
-                    <td>{{user.branchAll}}</td>
-                    <td>{{user.mode}}</td>
-                    <td>{{user.name}}</td>
-                    <td>{{user.dob}}</td>
-                    <td>{{user.gender}}</td>
-                    <td>{{user.age}}</td>
-                    <td>{{user.nationality}}</td>
-                    <td>{{user.religion}}</td>
-                    <td>{{user.motherto}}</td>
-                    <td>{{user.nativity}}</td>
-                    <td>{{user.selfno}}</td>
-                    <td>{{user.selfe}}</td>
-                    <td>{{user.dadn}}</td>
-                    <td>{{user.dadno}}</td>
-                    <td>{{user.momn}}</td>
-                    <td>{{user.momno}}</td>
-                    <td>{{user.guardn}}</td>
-                    <td>{{user.guardno}}</td>
-                    <td>{{user.community}}</td>
-                    <td>{{user.caste}}</td>
-                    <td>{{user.communityno}}</td>
-                    <td>{{user.AllotedCommunity}}</td>
-                    <td>{{user.aadhaarno}}</td>
-                    <td>{{user.door}}</td>
-                    <td>{{user.street}}</td>
-                    <td>{{user.location}}</td>
-                    <td>{{user.pincode}}</td>
-                    <td>{{user.taluk}}</td>
-                    <td>{{user.district}}</td>
-                    <td>{{user.state}}</td>
-                    <td>{{user.door1}}</td>
-                    <td>{{user.street1}}</td>
-                    <td>{{user.location1}}</td>
-                    <td>{{user.pincode1}}</td>
-                    <td>{{user.taluk1}}</td>
-                    <td>{{user.district1}}</td>
-                    <td>{{user.state1}}</td>
+                    <td>
+                        <!-- <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.id">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.id}}</div> -->
+                        {{user.admissionNo}}</td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.admissionFor">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.admissionFor}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.id">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.id}}</div>
+                        {{user.quota}}</td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.branchAll">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.branchAll}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.mode">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.mode}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.name">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.name}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.dob">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.dob}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.gender">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.gender}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.age">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.age}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.nationality">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.nationality}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.religion">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.religion}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.motherto">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.motherto}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.nativity">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.nativity}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.selfno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.selfno}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.selfe">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.selfe}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.dadn">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.dadn}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.dadno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.dadno}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.momn">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.momn}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.momno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.momno}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.guardn">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.guardn}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.guardno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.guardno}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.community">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.community}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.id">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.id}}</div>{{user.caste}}</td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.communityno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.communityno}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.AllotedCommunity">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.AllotedCommunity}}</div></td>
+                    <td>
+                        <!-- <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.aadhaarno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.aadhaarno}}</div> -->
+                        {{user.aadhaarno}}
+                    </td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.door">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.door}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.street">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.street}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.location">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.location}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.pincode">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.pincode}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.taluk">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.taluk}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.district">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.district}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.state">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.state}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.door1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.door1}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.street1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.street1}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.location1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.location1}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.pincode1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.pincode1}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.taluk1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.taluk1}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.district1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.district1}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.state1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.state1}}</div></td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <select name="GQ_MQ_Converted" id="GQ_MQ_Converted" class="formbold-form-input"

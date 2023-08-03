@@ -21,8 +21,8 @@ export class HscAcaTableComponent implements OnInit {
   
 
   loadall(){
-    const url = `http://172.16.71.2:3000/hsc_aca`;
-    // const url = `http://172.16.1.5:3000/hsc_aca`;
+    // const url = `http://172.16.71.2:3000/hsc_aca`;
+    const url = `http://172.16.1.5:3000/hsc_aca`;
     this.http.get(url).subscribe((res:any)=>
     {
       this.usersArray =res;
@@ -31,8 +31,8 @@ export class HscAcaTableComponent implements OnInit {
   }
 
   loadUser() {
-    const url = `http://172.16.71.2:3000/hsc_aca/${this.aadhar}`;
-    // const url = `http://172.16.1.5:3000/hsc_aca/${this.aadhar}`;
+    // const url = `http://172.16.71.2:3000/hsc_aca/${this.aadhar}`;
+    const url = `http://172.16.1.5:3000/hsc_aca/${this.aadhar}`;
 
     this.http.get(url).subscribe(
       (user: any) => {
@@ -53,8 +53,8 @@ export class HscAcaTableComponent implements OnInit {
   }
 
   onUpdateData(userObj: any): void {
-    const url = `http://172.16.71.2:5000/hsc_aca_resource/${this.aadhar}`;
-    // const url = `http://172.16.1.5:3000/resource/${this.aadhar}`;
+    // const url = `http://172.16.71.2:3000/hsc_aca_resource/${this.aadhar}`;
+    const url = `http://172.16.1.5:3000/hsc_aca_resource/${this.aadhar}`;
 
     console.log(userObj)
     this.http.put(url, userObj).subscribe(

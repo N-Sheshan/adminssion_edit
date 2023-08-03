@@ -38,10 +38,12 @@
                 <tr *ngFor="let user of usersArray;">
                     <td>{{user.id}}</td>
                     <td>
-                        <div *ngIf="user.isEdit">
+                        <!-- <div *ngIf="user.isEdit">
                             <input type="text" [(ngModel)]="user.admissionNo">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.admissionNo}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.admissionNo}}</div> -->
+                        {{user.admissionNo}}
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="text" [(ngModel)]="user.applyfor">

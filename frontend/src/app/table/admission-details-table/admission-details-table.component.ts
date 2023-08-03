@@ -20,8 +20,8 @@ export class AdmissionDetailsTableComponent implements OnInit {
   
 
   loadall(){
-    const url = `http://172.16.71.2:3000/admission_details`;
-    // const url = `http://172.16.1.5:3000/admission_details`;
+    // const url = `http://172.16.71.2:3000/admission_details`;
+    const url = `http://172.16.1.5:3000/admission_details`;
     this.http.get(url).subscribe((res:any)=>
     {
       this.usersArray =res;
@@ -31,8 +31,8 @@ export class AdmissionDetailsTableComponent implements OnInit {
 
   loadUser() {
     // console.log("inside function "+this.aadhar)
-    const url = `http://172.16.71.2:3000/admission_details/${this.aadhar}`;
-    // const url = `http://172.16.1.5:3000/admission_details/${this.aadhar}`;
+    // const url = `http://172.16.71.2:3000/admission_details/${this.aadhar}`;
+    const url = `http://172.16.1.5:3000/admission_details/${this.aadhar}`;
 
     this.http.get(url).subscribe(
       (user: any) => {
@@ -53,8 +53,8 @@ export class AdmissionDetailsTableComponent implements OnInit {
   }
 
   onUpdateData(userObj: any): void {
-    const url = `http://172.16.71.2:3000/admission_details_resource/${this.aadhar}`;
-    // const url = `http://172.16.1.5:3000/resource/${this.aadhar}`;
+    // const url = `http://172.16.71.2:3000/admission_details_resource/${this.aadhar}`;
+    const url = `http://172.16.1.5:3000/admission_details_resource/${this.aadhar}`;
 
     console.log(userObj)
     this.http.put(url, userObj).subscribe(

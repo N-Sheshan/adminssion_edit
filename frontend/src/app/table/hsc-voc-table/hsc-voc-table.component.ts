@@ -32,8 +32,8 @@ export class HscVocTableComponent implements OnInit {
 
   loadUser() {
     console.log("inside function "+this.aadhar)
-    const url = `http://172.16.71.2:3000/hsc_voc/${this.aadhar}`;
-    // const url = `http://172.16.1.5:3000/hsc_voc/${this.aadhar}`;
+    // const url = `http://172.16.71.2:3000/hsc_voc/${this.aadhar}`;
+    const url = `http://172.16.1.5:3000/hsc_voc/${this.aadhar}`;
 
     this.http.get(url).subscribe(
       (user: any) => {
@@ -54,8 +54,8 @@ export class HscVocTableComponent implements OnInit {
   }
 
   onUpdateData(userObj: any): void {
-    const url = `http://172.16.71.2:5000/hsc_voc_resource/${this.aadhar}`;
-    // const url = `http://172.16.1.5:3000/resource/${this.aadhar}`;
+    // const url = `http://172.16.71.2:3000/hsc_voc_resource/${this.aadhar}`;
+    const url = `http://172.16.1.5:3000/hsc_voc_resource/${this.aadhar}`;
 
     console.log(userObj)
     this.http.put(url, userObj).subscribe(

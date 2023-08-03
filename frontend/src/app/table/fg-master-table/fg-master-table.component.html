@@ -22,10 +22,11 @@
             <tbody>
                 <tr *ngFor="let user of usersArray;">
                     <td>
-                        <div *ngIf="user.isEdit">
+                        <!-- <div *ngIf="user.isEdit">
                             <input type="text" [(ngModel)]="user.admissionNo">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.admissionNo}}</div></td>
+                        <div *ngIf="!user.isEdit"> </div></td> -->
+                        {{user.admissionNo}}
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="text" [(ngModel)]="user.year">
