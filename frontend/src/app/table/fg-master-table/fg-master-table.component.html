@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="filter">
+        <form>
+            <input type="text" name="aader" id="" [(ngModel)]="aadhar" placeholder="  Enter  the  admissionNo" required>
+            <button type="submit" (click)="loadUser()">Search</button>
+        </form>
+
+        <button (click)="loadall()">View all</button>
+
+    </div>
+    <div class="col-11 table-responsive">
+        <table class="table  table-striped table-bordered table-hover sticky ">
+            <thead class='thead-dark'>
+                <tr>
+                    <th>admissionNo</th>
+                    <th>year</th>
+                    <th>fgNo</th>
+                    <th>fgType</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of usersArray;">
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.admissionNo">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.admissionNo}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.year">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.year}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.fgNo">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.fgNo}}</div></td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.fgType">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.fgType}}</div></td>
+                    <td style="width: 15%;" class="text-center">
+                        <div *ngIf="user.isEdit">
+                            <button class="btn btn-sm btn-success" (click)="onUpdateData(user)">Update</button>
+                            <button class="btn btn-sm btn-danger">Cancel</button>
+                        </div>
+                        <div *ngIf="!user.isEdit">
+                            <button class="btn-sm btn btn-success" (click)="onEdit(user)">Edit</button>
+                            <button class="btn-sm btn btn-secondary">Print</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+.row{
+    justify-content: center;
+}
+.filter{
+    width: 100%;
+    height:min-content;
+    display: flex;
+    justify-content: center;
+    margin: 10px 15px;
+    padding: 2%;
+}
+form{
+    width: 60%;
+    display: flex;
+    justify-content: right;
+}
+.filter form input{
+    height: 30px;
+    width: 40%;
+    margin: 10px;
+}
+.filter form button,.filter button {
+    height: 30px;
+    margin: 10px;
+    color: white;
+   width:  10%;
+    background-color:rgba(0, 0, 255, 0.699);
+    border-radius: 5px;
+}
+
+button{
+    margin:5px 5px;
+}
+.table{
+    display: block !important;
+   overflow-x: auto !important;
+   width: 100% !important;
+   max-height: 60vh !important;
+}
+.table.sticky th{
+    position:sticky;
+    top: 0;
+    background-color: #fff;
+}
+
+th:last-child,td:last-child{
+    position: sticky;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.747);
+}

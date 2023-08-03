@@ -1,0 +1,39 @@
+.navbar{
+  height: 4rem;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+}
+.nav-con{
+  display: flex;
+  justify-content: space-between;
+  gap: 57rem;
+  padding: 0px 20px;
+}
+.profile{
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  color: white;
+  column-gap: 10px;
+}
+.profile i{
+  font-size: 30px;
+  cursor: pointer;
+}
+.profile span{
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.side-nav-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.side-nav-button:hover{
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 30%;
+}

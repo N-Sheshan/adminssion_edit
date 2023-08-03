@@ -1,0 +1,40 @@
+app-navbar{
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  z-index: 2;
+}
+main{
+  position: absolute;
+  width: 100%;
+  top: 0rem;
+  z-index: 1;
+}
+app-sidebar{
+  position: absolute;
+  left: 0rem;
+  width: 60px;
+  height:100vh;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  background-color: rgb(9 229 84 / 73%);
+  border-top: 1px solid white;
+  overflow-x: hidden;
+  white-space: nowrap;
+  transition: width 250ms ease-in;
+}
+.app-sidebar-open{
+   width: 250px;
+}
+
+.display-area{
+  padding: absolute;
+  margin-left: 60px;
+  margin-top: 4rem;
+  width: calc(100% - 60px);
+  transition: left 250ms ease-in, width 250ms ease-in;
+}
+.display-area-shrink{
+  margin-left: 260px;
+  margin-top: 4rem;
+  width: calc(100% - 260px);
+}

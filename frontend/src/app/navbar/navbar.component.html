@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark px-2">
+  <div class="side-nav-button p-2 me-3 fs-4 text-light" (click)="SideNavToggle()">
+    <i class='bx bx-menu'></i>
+  </div>
+  <div class="nav-con">
+    <a class="navbar-brand px-4" href="#">RIT</a>
+
+    <div class="navbar-collapse">
+      <ul class="navbar-nav me-auto  mb-2 mb-lg-0">
+        <li class="nav-item dropstart">
+          <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="profile">
+              <i class='bx bx-user-circle'></i>
+               <span>Office Edit</span>
+            </div>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" routerLink="/activity">Activity</a></li>
+            <li><a class="dropdown-item" routerLink="/settings">Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" routerLink="/login">Login</a></li>
+            <li><a class="dropdown-item" routerLink="/register">Register</a></li>
+            <li><a class="dropdown-item" routerLink="/logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</nav>
+

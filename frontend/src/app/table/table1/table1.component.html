@@ -1,0 +1,211 @@
+<!-- <div class="filter">
+    <input type="text" name="" id="">
+</div> -->
+<div class="row">
+    <div class="filter">
+        <form >
+            <input type="number" name="aader" id="" [(ngModel)]="aadhar" placeholder="Enter the Aadhar_No" required>
+        <button  type="submit" (click)="loadUser()" >Search</button>
+        </form>
+        
+        <button (click)="loadall()">View all</button>
+
+    </div>
+    <div class="col-11 table-responsive">
+        <table class="table  table-striped table-bordered table-hover sticky ">
+            <thead class='thead-dark'>
+                <tr>
+                    <th>id</th>
+                    <th>admissionNo</th>
+                    <th>admissionFor</th>
+                    <th>quota</th>
+                    <th>branchAll</th>
+                    <th>mode</th>
+                    <th>name</th>
+                    <th>dob</th>
+                    <th>gender</th>
+                    <th>age</th>
+                    <th>nationality</th>
+                    <th>religion</th>
+                    <th>motherto</th>
+                    <th>nativity</th>
+                    <th>selfno</th>
+                    <th>selfe</th>
+                    <th>dadn</th>
+                    <th>dadno</th>
+                    <th>momn</th>
+                    <th>momno</th>
+                    <th>guardn</th>
+                    <th>guardno</th>
+                    <th>community</th>
+                    <th>caste</th>
+                    <th>communityno</th>
+                    <th>AllotedCommunity</th>
+                    <th>aadhaarno</th>
+                    <th>door</th>
+                    <th>street</th>
+                    <th>location</th>
+                    <th>pincode</th>
+                    <th>taluk</th>
+                    <th>district</th>
+                    <th>state</th>
+                    <th>door1</th>
+                    <th>street1</th>
+                    <th>location1</th>
+                    <th>pincode1</th>
+                    <th>taluk1</th>
+                    <th>district1</th>
+                    <th>state1</th>
+                    <th>GQ_MQ_Converted</th>
+                    <th>Dept_Changed</th>
+                    <th>year</th>
+                    <th>admission_Category</th>
+                    <th>admision_exit</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+                <tr *ngFor="let user of usersArray;">
+                    <td>
+                        <!-- <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.id">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.id}}</div> -->
+                        {{user.id}}
+
+                    </td>
+                    <td>{{user.admissionNo}}</td>
+                    <td>{{user.admissionFor}}</td>
+                    <td>{{user.quota}}</td>
+                    <td>{{user.branchAll}}</td>
+                    <td>{{user.mode}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.dob}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.age}}</td>
+                    <td>{{user.nationality}}</td>
+                    <td>{{user.religion}}</td>
+                    <td>{{user.motherto}}</td>
+                    <td>{{user.nativity}}</td>
+                    <td>{{user.selfno}}</td>
+                    <td>{{user.selfe}}</td>
+                    <td>{{user.dadn}}</td>
+                    <td>{{user.dadno}}</td>
+                    <td>{{user.momn}}</td>
+                    <td>{{user.momno}}</td>
+                    <td>{{user.guardn}}</td>
+                    <td>{{user.guardno}}</td>
+                    <td>{{user.community}}</td>
+                    <td>{{user.caste}}</td>
+                    <td>{{user.communityno}}</td>
+                    <td>{{user.AllotedCommunity}}</td>
+                    <td>{{user.aadhaarno}}</td>
+                    <td>{{user.door}}</td>
+                    <td>{{user.street}}</td>
+                    <td>{{user.location}}</td>
+                    <td>{{user.pincode}}</td>
+                    <td>{{user.taluk}}</td>
+                    <td>{{user.district}}</td>
+                    <td>{{user.state}}</td>
+                    <td>{{user.door1}}</td>
+                    <td>{{user.street1}}</td>
+                    <td>{{user.location1}}</td>
+                    <td>{{user.pincode1}}</td>
+                    <td>{{user.taluk1}}</td>
+                    <td>{{user.district1}}</td>
+                    <td>{{user.state1}}</td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <select name="GQ_MQ_Converted" id="GQ_MQ_Converted" class="formbold-form-input"
+                                [(ngModel)]="user.GQ_MQ_Converted" required>
+                                <option value="" disabled selected hidden>Select GQ_MQ_Converted</option>
+                                <option value="GQ">GQ</option>
+
+                            </select>
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.GQ_MQ_Converted}}</div>
+                    </td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <select name="Dept_Changed" id="Dept_Changed" class="formbold-form-input"
+                            [(ngModel)]="user.Dept_Changed" required>
+                            <option value="" disabled selected hidden>Select Dept_Changed</option>
+                            <option value="B.TECH AD">AD-ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</option>
+                            <option value="B.E CIVIL">CE-CIVIL ENGINEERING</option>
+                            <option value="B.TECH CSBS">CB-COMPUTER SCIENCE AND BUSINESS SYSTEM</option>
+                            <option value="B.E CSE">CS-COMPUTER SCIENCE AND ENGINEERING</option>
+                            <option value="B.E EEE">EE-ELECRICAL AND ELECTRONICS ENGINEERING</option>
+                            <option value="B.E ECE">EC-ELECTRONICS AND COMMUNICATION ENGINEERING</option>
+                            <option value="B.TECH IT">IT-INFORMATION TECHNOLOGY</option>
+                            <option value="B.E MECH">ME-MECHANICAL ENGINEERING</option>
+
+                        </select>
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.Dept_Changed}}</div>
+                    </td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.year">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.year}}</div>
+
+                    </td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <select name="admission_Category" id="admission_Category" class="formbold-form-input"
+                            [(ngModel)]="user.admission_Category" required>
+                            <option value="" disabled selected hidden>Select admission_Category</option>
+                            <option value="ACADEMIC GENERAL">General</option>
+                            <option value="7.5% GOVT GENERAL">Govt School - General</option>
+                            <option value="VOCATIONAL GENERAL">Vocational General</option>
+                            <option value="7.5% GOVT VOCATIONAL GENERAL">Govt School -Vocational General</option>
+                            <option value="7.5% GOVT DIFFERENTLY ABLED PERSON">Govt School - Diff.Abled</option>
+                            <option value="7.5% GOVT EXSERVICEMAN">Govt School - Exservicemen</option>
+                            <option value="7.5% GOVT SPORTS">Govt School - Sports</option>
+                            <option value="SPORTS">Sports</option>
+                            <option value="EXSERVICEMAN">Exservicemen</option>
+                            <option value="DIFFERENTLY ABLED PERSON">Differently Abled</option>
+                            <option value="SCA to SC Conversion - General">SCA to SC Conversion - General</option>
+                            <option value="SCA to SC Conversion - Govt">SCA to SC Conversion - Govt</option>
+                            <option value="Supplementary General">Supplementary General</option>
+                            <option value="Supplementary -Govt School">Supplementary -Govt School</option>
+                        </select>
+                        </div>
+                        <div *ngIf="!user.isEdit">  {{user.admission_Category}}</div> 
+                       </td>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <select name="admision_exit" id="admision_exit" class="formbold-form-input"
+                            [(ngModel)]="user.admision_exit" required>
+                            <option value="" disabled selected hidden>Select admision_exit</option>
+                            <option value="">null</option>
+                            <option value="MQ cancelled">MQ cancelled</option>
+                            <option value="GQ cancelled">GQ cancelled</option>
+                            </select>
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.admision_exit}}</div>
+                        </td>
+                    <td style="width: 15%;" class="text-center">
+                        <div *ngIf="user.isEdit">
+                            <button class="btn btn-sm btn-success" (click)="onUpdateData(user)">Update</button>
+                            <button class="btn btn-sm btn-danger" (click)="user.isEdit = false">Cancel</button>
+                        </div>
+                        <div *ngIf="!user.isEdit">
+                            <button class="btn-sm btn btn-success" (click)="onEdit(user)">Edit</button>
+                            <button class="btn-sm btn btn-secondary">Print</button>
+                        </div>
+
+                    </td>
+
+
+                </tr>
+
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
