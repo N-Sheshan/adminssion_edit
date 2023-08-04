@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 import { AdmissionDetailsTableComponent } from './table/admission-details-table/admission-details-table.component';
 import { FgMasterTableComponent } from './table/fg-master-table/fg-master-table.component';
 import { HscAcaTableComponent } from './table/hsc-aca-table/hsc-aca-table.component';
@@ -8,13 +11,16 @@ import { Table1Component } from './table/table1/table1.component';
 import { Table2Component } from './table/table2/table2.component';
 
 const routes: Routes = [
-  { path: '', component:Table1Component },
-  { path: 'student_master', component:Table1Component },
+  { path: '', component:LoginComponent },
+ 
+  { path: 'login', component:LoginComponent },
+  { path: 'dashboard', component:DashboardComponent ,children :[ { path: '', component:Table1Component },{ path: 'student_master', component:Table1Component },
   { path: 'additional_info', component:Table2Component },
   { path: 'admission_details', component:AdmissionDetailsTableComponent },
   { path: 'fg_master', component:FgMasterTableComponent },
   { path: 'hsc_aca', component:HscAcaTableComponent },
-  { path: 'hsc_voc', component:HscVocTableComponent },
+  { path: 'hsc_voc', component:HscVocTableComponent }] },
+  
   // { path: 'login', component: LoginComponent },
   // { path: 'register', component: RegisterComponent },
   // { path: 'logout', component: LogoutComponent },

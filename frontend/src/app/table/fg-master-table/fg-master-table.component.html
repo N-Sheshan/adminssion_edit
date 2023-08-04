@@ -29,7 +29,7 @@
                         {{user.admissionNo}}
                     <td>
                         <div *ngIf="user.isEdit">
-                            <input type="text" [(ngModel)]="user.year">
+                            <input type="number" [(ngModel)]="user.year">
                         </div>
                         <div *ngIf="!user.isEdit"> {{user.year}}</div></td>
                     <td>

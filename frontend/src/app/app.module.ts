@@ -16,12 +16,13 @@ import { Table1Component } from './table/table1/table1.component';
 
 // 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { Table2Component } from './table/table2/table2.component';
 import { AdmissionDetailsTableComponent } from './table/admission-details-table/admission-details-table.component';
 import { FgMasterTableComponent } from './table/fg-master-table/fg-master-table.component';
 import { HscAcaTableComponent } from './table/hsc-aca-table/hsc-aca-table.component';
 import { HscVocTableComponent } from './table/hsc-voc-table/hsc-voc-table.component';
+import { LoginComponent } from './login/login.component';
 
 // 
 @NgModule({
@@ -37,6 +38,7 @@ import { HscVocTableComponent } from './table/hsc-voc-table/hsc-voc-table.compon
     FgMasterTableComponent,
     HscAcaTableComponent,
     HscVocTableComponent,
+    LoginComponent,
 
 
   ],
@@ -46,7 +48,7 @@ import { HscVocTableComponent } from './table/hsc-voc-table/hsc-voc-table.compon
     HttpClientModule,
     FormsModule,
     // DataTablesModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,ReactiveFormsModule,
     MatTableModule
   ],
   providers: [],

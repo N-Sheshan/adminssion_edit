@@ -3,7 +3,7 @@
     <li class="nav-list-item" [routerLinkActive]="['active']" *ngFor="let item of list">
       <i class={{item.icon}}></i>
       <span>
-        <a routerLink={{item.link}}>{{item.name}}</a>
+        <a routerLink={{item.link}} routerLinkActive="badge-success">{{item.name}}</a>
       </span>
     </li>
 

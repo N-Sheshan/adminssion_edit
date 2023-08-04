@@ -14,37 +14,37 @@ export class SidebarComponent implements OnInit {
       id:1,
       name:'Studdent_master',
       icon:'bx bx-table',
-      link:'/'
+      link:'/dashboard/student_master'
     },
     {
       id:2,
       name:'additional_info',
       icon:'bx bx-table',
-      link:'/additional_info'
+      link:'/dashboard/additional_info'
     },
     {
       id:3,
       name:'admission_details',
       icon:'bx bx-table',
-      link:'/admission_details'
+      link:'/dashboard/admission_details'
     },
     {
       id:4,
       name:'fg_master',
       icon:'bx bx-table',
-      link:'/fg_master'
+      link:'/dashboard/fg_master'
     },
     {
       id:5,
       name:'hsc_aca',
       icon:'bx bx-table',
-      link:'/hsc_aca'
+      link:'/dashboard/hsc_aca'
     },
     {
       id:6,
       name:'hsc_voc',
       icon:'bx bx-table',
-      link:'/hsc_voc'
+      link:'/dashboard/hsc_voc'
     },
    
   ]

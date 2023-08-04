@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontend';
-  sideNavStatus:boolean = false;
+  // title = 'Office eidt';
+  // sideNavStatus:boolean = false;
 }
