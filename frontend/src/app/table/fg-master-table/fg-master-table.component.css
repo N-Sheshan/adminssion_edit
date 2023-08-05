@@ -52,10 +52,23 @@ th{
 .table.sticky th{
     position:sticky;
     top: 0;
-    background-color: #fff;
+    /* background-color: #fff; */
 }
 th:last-child,td:last-child{
     position: sticky;
     right: 0;
     background-color: rgba(0, 0, 0, 0.747);
+}
+td div,td{
+    color: black;
+    font-size: 4mm;
+    font-weight: 600;
+    text-align: center;
+}
+tr th{
+    font-size: large;
+    font-weight: revert;
+     color: white;
+    text-align: center;
+    background-color: #000000bd; 
 }

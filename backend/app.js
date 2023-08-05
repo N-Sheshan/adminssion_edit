@@ -195,6 +195,21 @@ app.get(`/hsc_voc/:id`, (req, res) => {
         })
     })
 })
+
+app.get(`/login/:email`,(req,res)=>{
+    const email = req.params.email;
+    pool.getConnection((err,result)=>{
+        if (err) throw err
+        result.query(`SELECT * FROM users where email=?`,[email],(err,rows)=>{
+            result.release()
+            if (!err) {
+                res.send(rows)
+            } else {
+                console.log(err)
+            }
+        })
+    })
+})
 // }end
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -321,4 +336,42 @@ app.put('/hsc_voc_resource/:aadhaarno', (req, res) => {
     })
 })
 
+
+// this code fro login work
+app.post('/api/login', async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      pool.getConnection((err, connection) => {
+        if (err) {
+          console.error('Error connecting to database:', err);
+          res.status(500).json({ success: false, message: 'Internal server error' });
+          return;
+        }
+  
+        const query = 'SELECT email FROM users WHERE email = ? ';
+        connection.query(query, [email], (err, results) => {
+          connection.release();
+  
+          if (err) {
+            console.error('Error executing query:', err);
+            res.status(500).json({ success: false, message: 'Internal server error' });
+            return;
+          }
+  
+          if (results.length === 1) {
+            res.json({ success: true, message: 'Login successful' });
+          } else {
+            res.status(401).json({ success: false, message: 'Invalid email or password' });
+          }
+        });
+      });
+    } catch (err) {
+      console.error('Error in login API:', err);
+      res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+  });
+  
+  
+// end here
 app.listen(port, () => console.log(`this backend has started in the port ${port}`));

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {ServiceService} from '../_service/service.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { onaccess } from  '../../environments/environment';
+// import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,27 +12,38 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  loginfromdata = new FormGroup({
-    username: new FormControl("",[Validators.required,Validators.pattern("[a-zA-Z].*")]),
-    password : new FormControl("",[Validators.required,Validators.minLength(8),Validators.maxLength(15)])
-  });
-
   
-get Username(){
-  return this.loginfromdata.get("username") as FormControl 
-}
-get Password(){
-  return this.loginfromdata.get("password") as FormControl 
-}
+    email='';
+    password='';
+    errorMessage='';
+  
 
-
-  constructor() { }
+  constructor(private authServer:ServiceService, private router: Router) { }
 
   ngOnInit(): void {
-  }
 
+  }
   onsubmit(){
-   
+    // console.log(this.login)
+  
+  }
+  
+  login() {
+    this.authServer.login(this.email, this.password).subscribe(
+      (data:any) => {
+        if (data.success) {
+          // Login successful, redirect to dashboard
+          console.log('hi am from login component',data)
+          this.router.navigate(['dashboard']);
+        } else {
+          this.errorMessage = data.message;
+        }
+      },
+      (error) => {
+        this.errorMessage = 'An error occurred';
+        console.error(error);
+      }
+    );
   }
 
 }

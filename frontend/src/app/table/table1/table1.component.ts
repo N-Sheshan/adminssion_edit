@@ -22,8 +22,8 @@ export class Table1Component implements OnInit {
   
 
   loadall(){
-    // const url = `http://172.16.71.2:3000/student_master`;
-    const url = `http://172.16.1.5:3000/student_master`;
+    const url = `http://172.16.71.2:3000/student_master`;
+    // const url = `http://172.16.1.5:3000/student_master`;
     this.http.get(url).subscribe((res:any)=>
     {
       this.usersArray =res;
@@ -32,8 +32,8 @@ export class Table1Component implements OnInit {
 
   loadUser() {
     // console.log("inside function "+this.aadhar)
-    // const url = `http://172.16.71.2:3000/${this.aadhar}`;
-    const url = `http://172.16.1.5:3000/${this.aadhar}`;
+    const url = `http://172.16.71.2:3000/${this.aadhar}`;
+    // const url = `http://172.16.1.5:3000/${this.aadhar}`;
 
     this.http.get(url).subscribe(
       (user: any) => {
@@ -54,8 +54,8 @@ export class Table1Component implements OnInit {
   }
 
   onUpdateData(userObj: any): void {
-    // const url = `http://172.16.71.2:3000/student_master_resource/${this.aadhar}`;
-    const url = `http://172.16.1.5:3000/student_master_resource/${this.aadhar}`;
+    const url = `http://172.16.71.2:3000/student_master_resource/${this.aadhar}`;
+    // const url = `http://172.16.1.5:3000/student_master_resource/${this.aadhar}`;
 
     console.log(userObj)
     this.http.put(url, userObj).subscribe(

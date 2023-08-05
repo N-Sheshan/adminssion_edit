@@ -9,12 +9,12 @@ import { HscAcaTableComponent } from './table/hsc-aca-table/hsc-aca-table.compon
 import { HscVocTableComponent } from './table/hsc-voc-table/hsc-voc-table.component';
 import { Table1Component } from './table/table1/table1.component';
 import { Table2Component } from './table/table2/table2.component';
-
+import {AuthGuardGuard} from './auth-guard.guard';
 const routes: Routes = [
   { path: '', component:LoginComponent },
- 
+  // { path: '**', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component:LoginComponent },
-  { path: 'dashboard', component:DashboardComponent ,children :[ { path: '', component:Table1Component },{ path: 'student_master', component:Table1Component },
+  { path: 'dashboard', component:DashboardComponent, canActivate: [AuthGuardGuard] ,children :[ { path: '', component:Table1Component },{ path: 'student_master', component:Table1Component },
   { path: 'additional_info', component:Table2Component },
   { path: 'admission_details', component:AdmissionDetailsTableComponent },
   { path: 'fg_master', component:FgMasterTableComponent },

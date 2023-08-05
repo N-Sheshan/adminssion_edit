@@ -16,28 +16,29 @@
       </svg>
 
       <h2>Sign Up</h2>
+      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 
-      <form action="" method="post" class="form" (ngSubmit)="onsubmit()" [formGroup]="loginfromdata">
+      <form action="" method="post" class="form" (ngSubmit)="login()" >
 
         <div class="form__field">
-          <input type="email" id="username" name="username" placeholder="info@mailaddress.com"
-            formControlName="password" required>
+          <input type="email" id="username" name="username" placeholder="info@mailaddress.com" [(ngModel)]='email'
+           required>
 
-          <div class="error" *ngIf="Username.errors?.['required'] && (Username.touched || Username.dirty)">
+          <!-- <div class="error" *ngIf="Username.errors?.['required'] && (Username.touched || Username.dirty)">
             Name is requied</div>
           <div class="error" *ngIf="Username.errors?.['pattern'] && (Username.touched || Username.dirty)">
-            Name should start with Alphabet</div>
+            Name should start with Alphabet</div> -->
         </div>
 
         <div class="form__field">
-          <input type="password" id="password" name="password" formControlName="password" placeholder="••••••••••••"
+          <input type="password" id="password" name="password"  placeholder="••••••••••••"  [(ngModel)]='password'
             required>
-          <div class="error" *ngIf="Password.errors?.['required'] && (Password.touched || Password.dirty)">
+          <!-- <div class="error" *ngIf="Password.errors?.['required'] && (Password.touched || Password.dirty)">
             Password is requied</div>
           <div class="error"
             *ngIf="Password.errors?.['minlength'] || Password.errors?.['maxlength'] && (Password.touched || Password.dirty)">
             Password shold be minimum 8 charaters maxmum 15 charaters
-          </div>
+          </div> -->
 
         </div>
 
@@ -46,8 +47,7 @@
         </div>
 
       </form>
-
-      <p>Already have an accout? <a href="#">Log in</a></p>
+      <!-- <p>Already have an accout? <a href="#">Log in</a></p> -->
 
     </div>
 

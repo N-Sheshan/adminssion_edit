@@ -273,19 +273,19 @@
                         <div *ngIf="!user.isEdit"> {{user.sslcsubm6}}</div></td>
                     <td>
                         <div *ngIf="user.isEdit">
-                            <input type="text" [(ngModel)]="user.admissionNo">
+                            <input type="text" [(ngModel)]="user.sslcout6">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.admissionNo}}</div>{{user.sslcout6}}</td>
+                        <div *ngIf="!user.isEdit"> {{user.sslcout6}}</div></td>
                     <td>
                         <div *ngIf="user.isEdit">
-                            <input type="text" [(ngModel)]="user.admissionNo">
+                            <input type="text" [(ngModel)]="user.sscltot">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.admissionNo}}</div>{{user.sscltot}}</td>
+                        <div *ngIf="!user.isEdit"> {{user.sscltot}}</div></td>
                     <td>
                         <div *ngIf="user.isEdit">
-                            <input type="text" [(ngModel)]="user.admissionNo">
+                            <input type="text" [(ngModel)]="user.sslcout">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.admissionNo}}</div>{{user.sslcout}}</td>                    
+                        <div *ngIf="!user.isEdit"> {{user.sslcout}}</div></td>                    
                     <td style="width: 15%;" class="text-center">
                         <div *ngIf="user.isEdit">
                             <button class="btn btn-sm btn-success" (click)="onUpdateData(user)">Update</button>

@@ -3,6 +3,7 @@
   position: fixed;
   width: 100%;
   top: 0px;
+  background-color: rgb(89 142 255);
 }
 .nav-con{
   display: flex;
