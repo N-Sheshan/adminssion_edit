@@ -40,7 +40,6 @@ login(email: string, password: string) {
         console.log(data)
         if (data.success) {
           this.isLoggedInFlag = true;
-          console.log(this.isLoggedInFlag)
         }
       })
     );

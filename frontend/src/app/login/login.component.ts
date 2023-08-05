@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
       (data:any) => {
         if (data.success) {
           // Login successful, redirect to dashboard
-          console.log('hi am from login component',data)
           this.router.navigate(['dashboard']);
         } else {
           this.errorMessage = data.message;

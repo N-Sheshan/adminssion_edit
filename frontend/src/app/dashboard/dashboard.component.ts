@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   constructor(private auth:ServiceService,private garde:AuthGuardGuard) { }
 
   ngOnInit(): void {
-    this.garde;
+    // this.garde;
   }
 
 }

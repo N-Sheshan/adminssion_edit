@@ -57,7 +57,7 @@ export class Table1Component implements OnInit {
     const url = `http://172.16.71.2:3000/student_master_resource/${this.aadhar}`;
     // const url = `http://172.16.1.5:3000/student_master_resource/${this.aadhar}`;
 
-    console.log(userObj)
+    console.log(userObj.admission_Category)
     this.http.put(url, userObj).subscribe(
       (response) => {
         console.log('Update successful:', response);
