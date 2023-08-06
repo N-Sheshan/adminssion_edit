@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
+import { url } from '../../../environments/environment';
 
 @Component({
   selector: 'app-hsc-voc-table',
@@ -15,15 +16,13 @@ export class HscVocTableComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    // this.loadall()
-    // console.log('answer'+this.aadhar)
+  
   }
   
 
   loadall(){
-    const url = `http://172.16.71.2:3000/hsc_voc`;
-    // const url = `http://172.16.1.5:3000/hsc_voc`;
-    this.http.get(url).subscribe((res:any)=>
+ 
+    this.http.get(`${url}hsc_voc`).subscribe((res:any)=>
     {
       this.usersArray =res;
     },
@@ -31,11 +30,7 @@ export class HscVocTableComponent implements OnInit {
   }
 
   loadUser() {
-    console.log("inside function "+this.aadhar)
-    // const url = `http://172.16.71.2:3000/hsc_voc/${this.aadhar}`;
-    const url = `http://172.16.1.5:3000/hsc_voc/${this.aadhar}`;
-
-    this.http.get(url).subscribe(
+    this.http.get(`${url}hsc_voc/${this.aadhar}`).subscribe(
       (user: any) => {
         this.usersArray = user;
       },
@@ -54,11 +49,21 @@ export class HscVocTableComponent implements OnInit {
   }
 
   onUpdateData(userObj: any): void {
-    // const url = `http://172.16.71.2:3000/hsc_voc_resource/${this.aadhar}`;
-    const url = `http://172.16.1.5:3000/hsc_voc_resource/${this.aadhar}`;
-
-    console.log(userObj)
-    this.http.put(url, userObj).subscribe(
+       userObj.voctot = (
+      userObj.vocsub1 +
+       userObj.vocsub2 + 
+       userObj.vocsub3 + 
+       userObj.vocsub4 + 
+       userObj.vocsub5 +
+        userObj.vocsub6) .toFixed(2) ;
+     userObj. voccutoff = ( 
+      userObj.vocsub3 + ((userObj.vocsub4 + userObj.vocsub5)/2)) .toFixed(2) ;
+     userObj. vocpcm = (
+      ( userObj.vocsub3 + userObj.vocsub4 + userObj.vocsub5)/3 ) .toFixed(2) ;
+      userObj.voctot = parseFloat(userObj.voctot);
+    userObj.voccutoff = parseFloat(userObj.voccutoff);
+    userObj.vocpcm = parseFloat(userObj.vocpcm);   
+    this.http.put(`${url}hsc_voc_resource/${this.aadhar}`, userObj).subscribe(
       (response) => {
         console.log('Update successful:', response);
         alert("Data updated Successfully")
@@ -74,13 +79,6 @@ export class HscVocTableComponent implements OnInit {
     userObj.isEdit =false;
   }
   
-  // onEdit(userObj: any) {
-  //   debugger;
-  //   this.usersArray.forEach(element => {
-  //     element.isEdit = false;
-  //   });
-  //   userObj.isEdit = true;
-  // }
 
 
   getaadhar(){

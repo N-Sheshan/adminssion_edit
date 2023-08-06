@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
+import { url } from '../../../environments/environment';
 
 @Component({
   selector: 'app-hsc-aca-table',
@@ -15,15 +16,13 @@ export class HscAcaTableComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    // this.loadall()
 
   }
   
 
   loadall(){
-    // const url = `http://172.16.71.2:3000/hsc_aca`;
-    const url = `http://172.16.1.5:3000/hsc_aca`;
-    this.http.get(url).subscribe((res:any)=>
+   
+    this.http.get(`${url}hsc_aca`).subscribe((res:any)=>
     {
       this.usersArray =res;
     },
@@ -31,10 +30,8 @@ export class HscAcaTableComponent implements OnInit {
   }
 
   loadUser() {
-    // const url = `http://172.16.71.2:3000/hsc_aca/${this.aadhar}`;
-    const url = `http://172.16.1.5:3000/hsc_aca/${this.aadhar}`;
-
-    this.http.get(url).subscribe(
+    
+    this.http.get(`${url}hsc_aca/${this.aadhar}`).subscribe(
       (user: any) => {
         this.usersArray = user;
       },
@@ -53,11 +50,28 @@ export class HscAcaTableComponent implements OnInit {
   }
 
   onUpdateData(userObj: any): void {
-    // const url = `http://172.16.71.2:3000/hsc_aca_resource/${this.aadhar}`;
-    const url = `http://172.16.1.5:3000/hsc_aca_resource/${this.aadhar}`;
+    userObj.acatot = (
+      userObj.acasub1 +
+      userObj.acasub2 +
+      userObj.acasub3 +
+      userObj.acasub4 +
+      userObj.acasub5 +
+      userObj.acasub6
+    ).toFixed(2);
+    userObj.acacutoff = (
+      userObj.acasub3 +
+      ((userObj.acasub4 + userObj.acasub5) / 2)
+    ).toFixed(2);
+  
+    userObj.acapcm = (
+      (userObj.acasub3 + userObj.acasub4 + userObj.acasub5) / 3
+    ).toFixed(2);
+    userObj.acatot = parseFloat(userObj.acatot);
+    userObj.acacutoff = parseFloat(userObj.acacutoff);
+    userObj.acapcm = parseFloat(userObj.acapcm);
+    
 
-    console.log(userObj)
-    this.http.put(url, userObj).subscribe(
+    this.http.put(`${url}hsc_aca_resource/${this.aadhar}`, userObj).subscribe(
       (response) => {
         console.log('Update successful:', response);
         alert("Data updated Successfully")
@@ -72,14 +86,6 @@ export class HscAcaTableComponent implements OnInit {
     );
     userObj.isEdit =false;
   }
-  
-  // onEdit(userObj: any) {
-  //   debugger;
-  //   this.usersArray.forEach(element => {
-  //     element.isEdit = false;
-  //   });
-  //   userObj.isEdit = true;
-  // }
 
 
   getaadhar(){

@@ -8,6 +8,7 @@ export const environment = {
 
 export const onaccess:boolean = false;
 
+export const  url = `http://172.16.71.2:3000/`;
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

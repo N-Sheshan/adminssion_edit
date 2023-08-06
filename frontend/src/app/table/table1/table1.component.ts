@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { elementAt } from 'rxjs';
-
+import { url } from '../../../environments/environment';
 @Component({
   selector: 'app-table1',
   templateUrl: './table1.component.html',
@@ -16,26 +16,19 @@ export class Table1Component implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    // this.loadall()
-    // console.log('answer'+this.aadhar)
   }
   
 
   loadall(){
-    const url = `http://172.16.71.2:3000/student_master`;
-    // const url = `http://172.16.1.5:3000/student_master`;
-    this.http.get(url).subscribe((res:any)=>
+
+    this.http.get(`${url}student_master`).subscribe((res:any)=>
     {
       this.usersArray =res;
     })
   }
 
   loadUser() {
-    // console.log("inside function "+this.aadhar)
-    const url = `http://172.16.71.2:3000/${this.aadhar}`;
-    // const url = `http://172.16.1.5:3000/${this.aadhar}`;
-
-    this.http.get(url).subscribe(
+    this.http.get(`${url}${this.aadhar}`).subscribe(
       (user: any) => {
         this.usersArray = user;
       },
@@ -53,12 +46,10 @@ export class Table1Component implements OnInit {
 
   }
 
-  onUpdateData(userObj: any): void {
-    const url = `http://172.16.71.2:3000/student_master_resource/${this.aadhar}`;
-    // const url = `http://172.16.1.5:3000/student_master_resource/${this.aadhar}`;
+  onUpdateData(userObj: any): void { 
 
     console.log(userObj.admission_Category)
-    this.http.put(url, userObj).subscribe(
+    this.http.put(`${url}student_master_resource/${this.aadhar}`, userObj).subscribe(
       (response) => {
         console.log('Update successful:', response);
         alert("Data updated Successfully")
