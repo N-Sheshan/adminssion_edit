@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
-import { url } from '../../../environments/environment';
-
+// import { url } from '../../../environments/environment';
+// const  url = `http://172.16.1.5:3000/`;
+const  url = `http://172.16.71.2:3000/`;
 @Component({
   selector: 'app-admission-details-table',
   templateUrl: './admission-details-table.component.html',
@@ -9,7 +10,8 @@ import { url } from '../../../environments/environment';
 })
 export class AdmissionDetailsTableComponent implements OnInit {
   aadhar:any;
-  
+  vertical:boolean=true;
+  horizontal:boolean=false;
   usersArray :any[]= []
   year=null;
 
@@ -27,6 +29,8 @@ export class AdmissionDetailsTableComponent implements OnInit {
       this.usersArray =res;
     },
     )
+    this.vertical=true;
+    this.horizontal=false;
   }
 
   loadUser() {
@@ -40,6 +44,9 @@ export class AdmissionDetailsTableComponent implements OnInit {
         console.error('Error fetching user data:', error);
       }
     );
+    if (this.aadhar != null){ 
+      this.vertical=false;
+      this.horizontal=true;}
   }
 
   onEdit(userObj:any){
@@ -51,9 +58,6 @@ export class AdmissionDetailsTableComponent implements OnInit {
   }
 
   onUpdateData(userObj: any): void {
-   
-
-    console.log(userObj)
     this.http.put(`${url}admission_details_resource/${this.aadhar}`, userObj).subscribe(
       (response) => {
         console.log('Update successful:', response);

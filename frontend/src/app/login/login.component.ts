@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ServiceService} from '../_service/service.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { onaccess } from  '../../environments/environment';
+// import { onaccess } from  '../../environments/environment';
 // import { environment } from '../../environments/environment';
 
 @Component({

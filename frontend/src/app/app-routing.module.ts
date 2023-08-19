@@ -14,13 +14,14 @@ const routes: Routes = [
   { path: '', component:LoginComponent },
   // { path: '**', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component:LoginComponent },
-  { path: 'dashboard', component:DashboardComponent, canActivate: [AuthGuardGuard] ,children :[ { path: '', component:Table1Component },{ path: 'student_master', component:Table1Component },
+  { path: 'dashboard', component:DashboardComponent,children :[ { path: '', component:Table1Component },{ path: 'student_master', component:Table1Component },
   { path: 'additional_info', component:Table2Component },
   { path: 'admission_details', component:AdmissionDetailsTableComponent },
   { path: 'fg_master', component:FgMasterTableComponent },
   { path: 'hsc_aca', component:HscAcaTableComponent },
   { path: 'hsc_voc', component:HscVocTableComponent }] },
-  
+   
+  // ,canActivate: [AuthGuardGuard]
   // { path: 'login', component: LoginComponent },
   // { path: 'register', component: RegisterComponent },
   // { path: 'logout', component: LogoutComponent },

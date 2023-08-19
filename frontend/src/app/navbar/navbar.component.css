@@ -6,9 +6,10 @@
   background-color: rgb(89 142 255);
 }
 .nav-con{
+  width: 65%;
   display: flex;
   justify-content: space-between;
-  gap: 57rem;
+  gap: 90%;
   padding: 0px 20px;
 }
 .profile{

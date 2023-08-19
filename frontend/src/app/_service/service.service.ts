@@ -30,6 +30,7 @@ export class ServiceService {
 
 // --------------------------------------
 private apiUrl = 'http://172.16.71.2:3000/api';
+// private apiUrl = 'http://172.16.1.5:3000/api';
 private isLoggedInFlag = false;
 
 
@@ -37,7 +38,7 @@ login(email: string, password: string) {
   return this.http.post<any>(`${this.apiUrl}/login`, { email, password })
     .pipe(
       tap((data:any) => {
-        console.log(data)
+        console.log('from serice',data)
         if (data.success) {
           this.isLoggedInFlag = true;
         }

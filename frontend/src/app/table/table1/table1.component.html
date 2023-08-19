@@ -3,16 +3,488 @@
 </div> -->
 <div class="row">
     <div class="filter">
-        <form >
+        <form>
             <input type="number" name="aader" id="" [(ngModel)]="aadhar" placeholder="Enter the Aadhar_No" required>
-        <button  type="submit" (click)="loadUser()" >Search</button>
+            <button type="submit" (click)="loadUser()">Search</button>
         </form>
-        
+
         <button (click)="loadall()">View all</button>
 
     </div>
-    <div class="col-11 table-responsive">
-        <table class="table  table-striped table-bordered table-hover sticky ">
+    <!-- horizontal table -->
+    <div class="col-5 table-responsive" *ngIf="horizontal"  >
+        <table class="table   sticky horizontal_table"  *ngFor="let user of usersArray">
+            <thead>
+                <tr>
+                  <th>Columns</th>
+                  <th>{{ user.name }} , {{ user.admissionNo }}</th>
+                  
+                </tr>
+              </thead>
+            <tbody>
+                <tr>
+                    <th>id</th>
+                    <td>{{ user.id }}</td>
+                </tr>
+                <tr>
+                    <th>Admission No</th>
+                    <td>{{user.admissionNo}}</td>
+                </tr>
+                <tr>
+                    <th>Admission</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.admissionFor">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.admissionFor}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Quota</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.quota">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.quota}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Branch</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.branchAll">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.branchAll}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Mode</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.mode">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.mode}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Name of the Student</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.name">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.name}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Date of Brith</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="date" [(ngModel)]="user.dob">
+                        </div>
+                        <div *ngIf="!user.isEdit">{{ user.dob | date: 'yyyy-MM-dd' }}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.gender">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.gender}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.age">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.age}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Nationality</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.nationality">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.nationality}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Religion</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.religion">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.religion}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Motherto</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.motherto">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.motherto}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>nativity</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.nativity">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.nativity}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>selfno</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.selfno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.selfno}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>selfe</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.selfe">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.selfe}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>dadn</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.dadn">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.dadn}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>dadno</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.dadno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.dadno}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>momn</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.momn">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.momn}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>momno</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.momno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.momno}}</div>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th>guardn</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.guardn">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.guardn}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>guardno</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.guardno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.guardno}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>community</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.community">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.community}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>caste</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.caste">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.caste}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>communityno</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.communityno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.communityno}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>AllotedCommunity</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.AllotedCommunity">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.AllotedCommunity}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>aadhaarno</th>
+                    <td>
+                        {{user.aadhaarno}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>door</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.door">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.door}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>street</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.street">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.street}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>location</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.location">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.location}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>pincode</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.pincode">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.pincode}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>taluk</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.taluk">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.taluk}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>district</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.district">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.district}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>state</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.state">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.state}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>door1</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.door1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.door1}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>street1</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.street1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.street1}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>location1</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.location1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.location1}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>pincode1</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.pincode1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.pincode1}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>taluk1</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.taluk1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.taluk1}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>district1</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.district1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.district1}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>state1</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.state1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.state1}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>GQ_MQ_Converted</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <select name="GQ_MQ_Converted" id="GQ_MQ_Converted" class="formbold-form-input"
+                                [(ngModel)]="user.GQ_MQ_Converted" required>
+                                <option value="" disabled selected hidden>Select GQ_MQ_Converted</option>
+                                <option value="GQ">GQ</option>
+
+                            </select>
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.GQ_MQ_Converted}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Dept_Changed</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <select name="Dept_Changed" id="Dept_Changed" class="formbold-form-input"
+                                [(ngModel)]="user.Dept_Changed" required>
+                                <option value="" disabled selected hidden>Select Dept_Changed</option>
+                                <option value="B.TECH AD">AD-ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</option>
+                                <option value="B.E CIVIL">CE-CIVIL ENGINEERING</option>
+                                <option value="B.TECH CSBS">CB-COMPUTER SCIENCE AND BUSINESS SYSTEM</option>
+                                <option value="B.E CSE">CS-COMPUTER SCIENCE AND ENGINEERING</option>
+                                <option value="B.E EEE">EE-ELECRICAL AND ELECTRONICS ENGINEERING</option>
+                                <option value="B.E ECE">EC-ELECTRONICS AND COMMUNICATION ENGINEERING</option>
+                                <option value="B.TECH IT">IT-INFORMATION TECHNOLOGY</option>
+                                <option value="B.E MECH">ME-MECHANICAL ENGINEERING</option>
+
+                            </select>
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.Dept_Changed}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>year</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.year">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.year}}</div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>admission_Category</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <select name="admission_Category" id="admission_Category" class="formbold-form-input"
+                                [(ngModel)]="user.admission_Category" required>
+                                <option value="" disabled selected hidden>Select admission_Category</option>
+                                <option value="ACADEMIC GENERAL">General</option>
+                                <option value="7.5% GOVT GENERAL">Govt School - General</option>
+                                <option value="VOCATIONAL GENERAL">Vocational General</option>
+                                <option value="7.5% GOVT VOCATIONAL GENERAL">Govt School -Vocational General</option>
+                                <option value="7.5% GOVT DIFFERENTLY ABLED PERSON">Govt School - Diff.Abled</option>
+                                <option value="7.5% GOVT EXSERVICEMAN">Govt School - Exservicemen</option>
+                                <option value="7.5% GOVT SPORTS">Govt School - Sports</option>
+                                <option value="SPORTS">Sports</option>
+                                <option value="EXSERVICEMAN">Exservicemen</option>
+                                <option value="DIFFERENTLY ABLED PERSON">Differently Abled</option>
+                                <option value="SCA to SC Conversion - General">SCA to SC Conversion - General</option>
+                                <option value="SCA to SC Conversion - Govt">SCA to SC Conversion - Govt</option>
+                                <option value="Supplementary General">Supplementary General</option>
+                                <option value="Supplementary -Govt School">Supplementary -Govt School</option>
+                            </select>
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.admission_Category}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>admision_exit</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <select name="admision_exit" id="admision_exit" class="formbold-form-input"
+                                [(ngModel)]="user.admission_exit" required>
+                                <option value="" disabled selected hidden>Select admision_exit</option>
+                                <option value="">null</option>
+                                <option value="MQ cancelled">MQ cancelled</option>
+                                <option value="GQ cancelled">GQ cancelled</option>
+                            </select>
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.admision_exit}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th  class="last_row">Action</th>
+                    <td style="width: 15%;" class="text-center">
+                        <div *ngIf="user.isEdit">
+                            <button class="btn btn-sm btn-success wight" (click)="onUpdateData(user)">Update</button>
+                            <button class="btn btn-sm btn-danger" (click)="user.isEdit = false">Cancel</button>
+                        </div>
+                        <div *ngIf="!user.isEdit">
+                            <button class="btn-sm btn btn-success" (click)="onEdit(user)">Edit</button>
+                            <button class="btn-sm btn btn-secondary">Print</button>
+                        </div>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- vertical table -->
+    <div class="col-11 table-responsive" *ngIf="vertical">
+        <table class="table  table-striped table-bordered table-hover sticky vertical_table">
             <thead >
                 <tr>
                     <th>id</th>
@@ -61,7 +533,7 @@
                     <th>Academic Year</th>
                     <th>admission_Category</th>
                     <th>admision_exit</th>
-                    <th>Action</th>
+                    <!-- <th>Action</th> -->
 
                 </tr>
             </thead>
@@ -352,7 +824,7 @@
                         </div>
                         <div *ngIf="!user.isEdit"> {{user.admision_exit}}</div>
                         </td>
-                    <td style="width: 15%;" class="text-center">
+                    <!-- <td style="width: 15%;" class="text-center">
                         <div *ngIf="user.isEdit">
                             <button class="btn btn-sm btn-success" (click)="onUpdateData(user)">Update</button>
                             <button class="btn btn-sm btn-danger" (click)="user.isEdit = false">Cancel</button>
@@ -362,7 +834,7 @@
                             <button class="btn-sm btn btn-secondary">Print</button>
                         </div>
 
-                    </td>
+                    </td> -->
 
 
                 </tr>
@@ -372,4 +844,5 @@
             </tbody>
         </table>
     </div>
+
 </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
-import { url } from '../../../environments/environment';
+// import { url } from '../../../environments/environment';
+// const  url = `http://172.16.1.5:3000/`;
+const  url = `http://172.16.71.2:3000/`;
 
 @Component({
   selector: 'app-table2',
@@ -9,32 +11,28 @@ import { url } from '../../../environments/environment';
 })
 export class Table2Component implements OnInit {
   aadhar:any;
-  
+  vertical:boolean=true;
+  horizontal:boolean=false;
   usersArray :any[]= []
   year=null;
-
+  
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    // this.loadall()
-    // console.log('answer'+this.aadhar)
   }
   
 
   loadall(){
-    // const url = `http://172.16.71.2:3000/additional_info`;
-    // const url = `http://172.16.1.5:3000/additional_info`;
     this.http.get(`${url}additional_info`).subscribe((res:any)=>
     {
       this.usersArray =res;
     },
     )
+    this.vertical=true;
+  this.horizontal=false;
   }
 
   loadUser() {
-    // console.log("inside function "+this.aadhar)
-    // const url = `http://172.16.71.2:3000/additional_info/${parseInt(this.aadhar)}`;
-    // const url = `http://172.16.1.5:3000/additional_info/${parseInt(this.aadhar)}`;
 
     this.http.get(`${url}additional_info/${parseInt(this.aadhar)}`).subscribe(
       (user: any) => {
@@ -44,6 +42,9 @@ export class Table2Component implements OnInit {
         console.error('Error fetching user data:', error);
       }
     );
+    if (this.aadhar != null){ 
+      this.vertical=false;
+      this.horizontal=true;}
   }
 
   onEdit(userObj:any){
@@ -55,10 +56,6 @@ export class Table2Component implements OnInit {
   }
 
   onUpdateData(userObj: any): void {
-    // const url = `http://172.16.71.2:3000/additional_info_resource/${this.aadhar}`;
-    // const url = `http://172.16.1.5:3000/additional_info_resource/${this.aadhar}`;
-
-    console.log(userObj)
     this.http.put(`${url}additional_info_resource/${this.aadhar}`, userObj).subscribe(
       (response) => {
         console.log('Update successful:', response);

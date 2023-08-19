@@ -14,10 +14,21 @@ form{
     display: flex;
     justify-content: right;
 }
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    /* font-size: inherit; */
+    line-height: inherit;
+    font-size: large;
+    color: black;
+    font-weight: 500;
+}
 .filter form input{
     height: 30px;
     width: 40%;
     margin: 10px;
+    color: black;
 }
 .filter form button,.filter button {
     height: 30px;
@@ -31,39 +42,62 @@ form{
 button{
     margin:5px 5px;
 }
-.table{
+.horizontal_table{
+    display: block !important;
+   overflow-x: auto !important;
+   width: 100% !important;
+   max-height: 74vh !important;
+}
+.horizontal_table tbody th{
+    width: 50%;
+}
+.horizontal_table.sticky thead th{
+    position:sticky;
+    top: 0;
+    color: white;
+    background-color: rgb(32, 32, 32);
+}
+.table-bordered>:not(caption)>*>* {
+    border-width: 0 1px;
+    font-size: large;
+} 
+.horizontal_table  tbody tr .last_row{
+    color: rgb(255, 255, 255);
+}
+.horizontal_table tbody tr:last-child{
+    position: sticky;
+    bottom: 0;
+    background-color: rgba(37, 37, 37, 0.836);
+}
+
+
+/* vertical table */
+.vertical_table{
     display: block !important;
    overflow-x: auto !important;
    width: 100% !important;
    max-height: 60vh !important;
 }
-.table.sticky th{
+.vertical_table.sticky th{
     position:sticky;
     top: 0;
-   
-    
+    /* background-color: #fff; */
 }
-
-th:last-child,td:last-child{
+/* .vertical_table th:last-child {
     position: sticky;
     right: 0;
     background-color: rgba(0, 0, 0, 0.747);
-}
-td div,td{
+} */
+.vertical_table td div,td{
     color: black;
     font-size: 4mm;
     font-weight: 600;
     text-align: center;
 }
-tr th{
+.vertical_table tr th{
     font-size: large;
     font-weight: revert;
      color: white;
     text-align: center;
     background-color: #000000bd; 
-    /* display: flex; */
-    /* justify-content: center; */
 }
-/* thead{
-    background-color: #000000bd; 
-} */

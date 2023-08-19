@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000;
 const mysql = require('mysql')
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+const bcrypt = require('bcrypt');
 const pool = mysql.createPool({
     connectionLimit: 100,
     host: 'localhost',
@@ -218,9 +218,9 @@ app.get(`/login/:email`,(req,res)=>{
 app.put('/student_master_resource/:aadhaarno', (req, res) => {
     pool.getConnection((err, result) => {
         if (err) throw err
-        const { id, admissionNo, admissionFor, quota, branchAll, mode, name, dob, gender, age, nationality, religion, motherto, nativity, selfno, selfe, dadn, dadno, momn, momno, guardn, guardno, community, caste, communityno, AllotedCommunity, aadhaarno, door, street, location, pincode, taluk, district, state, door1, street1, location1, pincode1, taluk1, district1, state1, GQ_MQ_Converted, Dept_Changed, year, admission_Category, admision_exit} = req.body;
+        const { id, admissionNo, admissionFor, quota, branchAll, mode, name, dob, gender, age, nationality, religion, motherto, nativity, selfno, selfe, dadn, dadno, momn, momno, guardn, guardno, community, caste, communityno, AllotedCommunity, aadhaarno, door, street, location, pincode, taluk, district, state, door1, street1, location1, pincode1, taluk1, district1, state1, GQ_MQ_Converted, Dept_Changed, year, admission_Category, admission_exit} = req.body;
         
-        result.query(`UPDATE student_master SET admissionFor=?, quota=?, branchAll=?, mode=?, name=?, dob=?, gender=?, age=?, nationality=?, religion=?, motherto=?, nativity=?, selfno=?, selfe=?, dadn=?, dadno=?, momn=?, momno=?, guardn=?, guardno=?, community=?, caste=?, communityno=?, AllotedCommunity=?,door=?, street=?, location=?, pincode=?, taluk=?, district=?, state=?, door1=?, street1=?, location1=?, pincode1=?, taluk1=?, district1=?, state1=?, GQ_MQ_Converted=?, Dept_Changed=?, year=?, admission_Category=?, admision_exit=? WHERE aadhaarno = ? `, [admissionFor, quota, branchAll, mode, name, dob, gender, age, nationality, religion, motherto, nativity, selfno, selfe, dadn, dadno, momn, momno, guardn, guardno, community, caste, communityno, AllotedCommunity, door, street, location, pincode, taluk, district, state, door1, street1, location1, pincode1, taluk1, district1, state1, GQ_MQ_Converted, Dept_Changed, year, admission_Category, admision_exit, req.params.aadhaarno], (err, rows) => {
+        result.query(`UPDATE student_master SET admissionFor=?, quota=?, branchAll=?, mode=?, name=?, dob=?, gender=?, age=?, nationality=?, religion=?, motherto=?, nativity=?, selfno=?, selfe=?, dadn=?, dadno=?, momn=?, momno=?, guardn=?, guardno=?, community=?, caste=?, communityno=?, AllotedCommunity=?,door=?, street=?, location=?, pincode=?, taluk=?, district=?, state=?, door1=?, street1=?, location1=?, pincode1=?, taluk1=?, district1=?, state1=?, GQ_MQ_Converted=?, Dept_Changed=?, year=?, admission_Category=?, admission_exit=? WHERE aadhaarno = ? `, [admissionFor, quota, branchAll, mode, name, dob, gender, age, nationality, religion, motherto, nativity, selfno, selfe, dadn, dadno, momn, momno, guardn, guardno, community, caste, communityno, AllotedCommunity, door, street, location, pincode, taluk, district, state, door1, street1, location1, pincode1, taluk1, district1, state1, GQ_MQ_Converted, Dept_Changed, year, admission_Category, admission_exit, req.params.aadhaarno], (err, rows) => {
             result.release()
             if (!err) {
                 res.send()
@@ -318,7 +318,27 @@ app.put('/hsc_voc_resource/:aadhaarno', (req, res) => {
        
     })
 })
-
+// this is insert method block{
+    app.post('/add_fg_master', (req, res) => {
+        pool.getConnection((err, result) => {
+            if (err) throw err;
+            const { admissionNo, year, fgNo, fgType } = req.body;
+            result.query(
+                'INSERT INTO fg_master (admissionNo, year, fgNo, fgType) VALUES (?, ?, ?, ?)',
+                [admissionNo, year, fgNo, fgType],
+                (err, rows) => {
+                    result.release();
+                    if (!err) {
+                        res.send();
+                    } else {
+                        console.log(err);
+                    }
+                }
+            );
+        });
+    });
+    
+// }this end
 
 // this code fro login work
 app.post('/api/login', async (req, res) => {
@@ -332,8 +352,8 @@ app.post('/api/login', async (req, res) => {
           return;
         }
   
-        const query = 'SELECT email FROM users WHERE email = ? ';
-        connection.query(query, [email], (err, results) => {
+        const query = 'SELECT * FROM sample_user WHERE email = ? AND password = ? ';
+        connection.query(query, [email,password], (err, results) => {
           connection.release();
   
           if (err) {
@@ -354,6 +374,62 @@ app.post('/api/login', async (req, res) => {
       res.status(500).json({ success: false, message: 'Internal server error' });
     }
   });
+  
+
+// app.post('/api/login', async (req, res) => {
+//     const { email, password } = req.body;
+  
+//     try {
+//       pool.getConnection((err, connection) => {
+//         if (err) {
+//           console.error('Error connecting to database:', err);
+//           res.status(500).json({ success: false, message: 'Internal server error' });
+//           return;
+//         }
+  
+//         const query = 'SELECT email, password FROM users WHERE email = ? ';
+//         connection.query(query, [email], async (err, results) => {
+//           connection.release();
+  
+//           if (err) {
+//             console.error('Error executing query:', err);
+//             res.status(500).json({ success: false, message: 'Internal server error' });
+//             return;
+//           }
+  
+//           if (results.length === 1) {
+//             const db_password_hash = results[0].password;
+  
+//             // Verify the user-entered password against the stored hash
+//             console.log(password)
+//             console.log(db_password_hash)
+//             bcrypt.compare(password, db_password_hash, (err, pass_match) => {
+//                 console.log(pass_match)
+//               if (err) {
+//                 console.error('Error occurred during password verification:', err);
+//                 res.status(500).json({ success: false, message: 'Internal server error' });
+//                 return;
+//               }
+  
+//               if (pass_match) {
+//                 // Passwords match, login successful
+//                 res.json({ success: true, message: 'Login successful' });
+//               } else {
+//                 // Passwords do not match, login failed
+//                 res.status(401).json({ success: false, message: 'Invalid email or password ---' });
+//               }
+//             });
+//           } else {
+//             // User not found with the given email
+//             res.status(401).json({ success: false, message: 'Invalid email or password not in db' });
+//           }
+//         });
+//       });
+//     } catch (err) {
+//       console.error('Error in login API:', err);
+//       res.status(500).json({ success: false, message: 'Internal server error' });
+//     }
+//   });
   
   
 // end here

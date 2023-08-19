@@ -8,8 +8,8 @@
         <button (click)="loadall()">View all</button>
 
     </div>
-    <div class="col-11 table-responsive">
-        <table class="table  table-striped table-bordered table-hover sticky ">
+    <div class="col-11 table-responsive" *ngIf="vertical">
+        <table class="table  table-striped table-bordered table-hover sticky  vertical_table ">
             <thead class='thead-dark'>
                 <tr>
                     <th>admissionNo</th>
@@ -30,7 +30,7 @@
                     <th>voctot</th>
                     <th>voccutoff</th>
                     <th>vocpcm</th>
-                    <th>Action</th>
+                    <!-- <th>Action</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -144,7 +144,7 @@
                         </div>
                         <div *ngIf="!user.isEdit"> {{user.vocpcm}}</div>
                     </td>
- 
+<!-- 
                     <td style="width: 15%;" class="text-center">
                         <div *ngIf="user.isEdit">
                             <button class="btn btn-sm btn-success" (click)="onUpdateData(user)">Update</button>
@@ -155,13 +155,200 @@
                             <button class="btn-sm btn btn-secondary">Print</button>
                         </div>
 
-                    </td>
+                    </td> -->
 
 
                 </tr>
 
 
 
+            </tbody>
+        </table>
+    </div>
+    <!-- horizontal table -->
+    <div class="col-7 table-responsive" *ngIf="horizontal">
+        <table class="table  table-striped table-bordered table-hover sticky horizontal_table"
+            *ngFor="let user of usersArray">
+            <thead>
+                <tr>
+                    <th>Columns</th>
+                    <th> {{ user.admissionNo }}</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>admissionNo</th>
+                    <td>
+                        {{user.admissionNo}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>applyfor</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.applyfor">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.applyfor}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>hscregno</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.hscregno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.hscregno}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>hscmarkno</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.hscmarkno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.hscmarkno}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>hscin</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.hscin">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.hscin}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>category</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.category">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.category}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>vocsub1</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.vocsub1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.vocsub1}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>vocsub2</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.vocsub2">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.vocsub2}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>vocsub3n</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.vocsub3n">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.vocsub3n}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>vocsub3</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.vocsub3">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.vocsub3}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>vocsub4</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.vocsub4">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.vocsub4}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>vocsub5n</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.vocsub5n">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.vocsub5n}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>vocsub5</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.vocsub5">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.vocsub5}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>vocsub6n</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.vocsub6n">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.vocsub6n}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>vocsub6</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.vocsub6">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.vocsub6}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>voctot</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.voctot">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.voctot}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>voccutoff</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.voccutoff">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.voccutoff}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>vocpcm</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.vocpcm">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.vocpcm}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th  class="last_row">Action</th>
+                    <td style="width: 15%;" class="text-center">
+                        <div *ngIf="user.isEdit">
+                            <button class="btn btn-sm btn-success" (click)="onUpdateData(user)">Update</button>
+                            <button class="btn btn-sm btn-danger" (click)="user.isEdit = false">Cancel</button>
+                        </div>
+                        <div *ngIf="!user.isEdit">
+                            <button class="btn-sm btn btn-success" (click)="onEdit(user)">Edit</button>
+                            <button class="btn-sm btn btn-secondary">Print</button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

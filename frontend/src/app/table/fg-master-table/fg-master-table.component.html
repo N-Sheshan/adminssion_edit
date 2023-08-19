@@ -6,10 +6,11 @@
         </form>
 
         <button (click)="loadall()">View all</button>
+        <button (click)="insert()">Insert Data</button>
 
     </div>
-    <div class="col-11 table-responsive">
-        <table class="table  table-striped table-bordered table-hover sticky ">
+    <div class="col-8 table-responsive" *ngIf="vertical || allvalue">
+        <table class="table  table-striped table-bordered table-hover sticky  vertical_table">
             <thead class='thead-dark'>
                 <tr>
                     <th>admissionNo</th>
@@ -19,7 +20,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 <tr *ngFor="let user of usersArray;">
                     <td>
                         <!-- <div *ngIf="user.isEdit">
@@ -31,17 +32,20 @@
                         <div *ngIf="user.isEdit">
                             <input type="number" [(ngModel)]="user.year">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.year}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.year}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="text" [(ngModel)]="user.fgNo">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.fgNo}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.fgNo}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="text" [(ngModel)]="user.fgType">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.fgType}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.fgType}}</div>
+                    </td>
                     <td style="width: 15%;" class="text-center">
                         <div *ngIf="user.isEdit">
                             <button class="btn btn-sm btn-success" (click)="onUpdateData(user)">Update</button>
@@ -52,8 +56,116 @@
                             <button class="btn-sm btn btn-secondary">Print</button>
                         </div>
                     </td>
-                </tr>
+                </tr>              
             </tbody>
         </table>
     </div>
+
+
+    <div class="col-7 table-responsive" *ngIf="inserts">
+        <table class="table  table-striped table-bordered table-hover sticky horizontal_table ">
+            <thead>
+                <tr>
+                    <th>Columns</th>
+                    <th>Entery</th>
+                </tr>
+              </thead>
+            <tbody>
+                  <!-- to insert the data -->
+                  <tr>
+                    <th>admissionNo</th>
+                    <td>
+                        <input type="number" placeholder="Enter the admissionNo"[(ngModel)]="insert_value.admissionNo"></td>
+                 
+                </tr>
+                <tr>
+                    <th>year</th>
+                    <td>
+                        <input type="number" placeholder="Enter the year" [(ngModel)]="insert_value.year"></td>
+                    
+                </tr>
+                <tr>
+                    <th>fgNo</th>                     
+                    <td>
+                        <input type="text" placeholder="Enter the fgNo" [(ngModel)]="insert_value.fgNo"></td>
+                </tr>
+                <tr>
+                    <th>fgType</th>                     
+                    <td>
+                        <input type="text" placeholder="Enter the fgType" [(ngModel)]="insert_value.fgType">
+                    </td>
+                </tr>    
+                <tr>
+                    <th  class="last_row">Action</th>               
+                    <td style="width: 15%;" class="text-center">
+                        <div>
+                            <button class="btn btn-sm btn-success" (click)="insert_to_db()">insert</button>
+                            <button class="btn btn-sm btn-danger" (click)="inserts=false">Cancel</button>
+                        </div>
+                      
+                    </td>
+                </tr>    
+             
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="col-7 table-responsive" *ngIf="horizontal"  >
+        <table class="table  table-striped table-bordered table-hover sticky horizontal_table"  *ngFor="let user of usersArray">
+            <thead>
+                <tr>
+                  <th>Columns</th>
+                  <th> {{ user.admissionNo }}</th>
+                  
+                </tr>
+              </thead>
+            <tbody>
+                <tr>
+                    <th>admissionNo</th>
+                    <td>{{user.admissionNo}}</td>
+                </tr>
+                <tr>
+                    <th>year</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.year">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.year}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>fgNo</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.fgNo">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.fgNo}}</div>
+                    </td>
+                </tr>  
+                <tr>
+                    <th>fgType</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.fgType">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.fgType}}</div>
+                    </td>
+                </tr> 
+
+                <tr>
+                    <th  class="last_row">Action</th>
+                    <td style="width: 15%;" class="text-center">
+                        <div *ngIf="user.isEdit">
+                            <button class="btn btn-sm btn-success" (click)="onUpdateData(user)">Update</button>
+                            <button class="btn btn-sm btn-danger">Cancel</button>
+                        </div>
+                        <div *ngIf="!user.isEdit">
+                            <button class="btn-sm btn btn-success" (click)="onEdit(user)">Edit</button>
+                            <button class="btn-sm btn btn-secondary">Print</button>
+                        </div>
+                    </td>
+                </tr> 
+            </tbody>
+        </table></div>
 </div>

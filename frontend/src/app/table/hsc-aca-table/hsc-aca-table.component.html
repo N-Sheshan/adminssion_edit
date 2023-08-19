@@ -8,8 +8,8 @@
         <button (click)="loadall()">View all</button>
 
     </div>
-    <div class="col-11 table-responsive">
-        <table class="table  table-striped table-bordered table-hover sticky ">
+    <div class="col-11 table-responsive" *ngIf="vertical" style="height: 75vh;">
+        <table class="table  table-striped table-bordered table-hover sticky vertical_table">
             <thead class='thead-dark'>
                 <tr>
                     <th>id</th>
@@ -38,87 +38,98 @@
                 <tr *ngFor="let user of usersArray;">
                     <td>{{user.id}}</td>
                     <td>
-                        <!-- <div *ngIf="user.isEdit">
-                            <input type="text" [(ngModel)]="user.admissionNo">
-                        </div>
-                        <div *ngIf="!user.isEdit"> {{user.admissionNo}}</div> -->
                         {{user.admissionNo}}
                     </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="text" [(ngModel)]="user.applyfor">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.applyfor}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.applyfor}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="text" [(ngModel)]="user.hscregno">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.hscregno}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.hscregno}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="text" [(ngModel)]="user.hscmarkno">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.hscmarkno}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.hscmarkno}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="text" [(ngModel)]="user.hscin">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.hscin}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.hscin}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="text" [(ngModel)]="user.category">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.category}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.category}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="number" [(ngModel)]="user.acasub1">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.acasub1}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.acasub1}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="number" [(ngModel)]="user.acasub2">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.acasub2}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.acasub2}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="number" [(ngModel)]="user.acasub3">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.acasub3}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.acasub3}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="number" [(ngModel)]="user.acasub4">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.acasub4}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.acasub4}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="number" [(ngModel)]="user.acasub5">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.acasub5}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.acasub5}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="text" [(ngModel)]="user.acasub6n">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.acasub6n}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.acasub6n}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="number" [(ngModel)]="user.acasub6">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.acasub6}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.acasub6}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="number" [(ngModel)]="user.acatot">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.acatot}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.acatot}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="number" [(ngModel)]="user.acapcm">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.acapcm}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.acapcm}}</div>
+                    </td>
                     <td>
                         <div *ngIf="user.isEdit">
                             <input type="number" [(ngModel)]="user.acacutoff">
                         </div>
-                        <div *ngIf="!user.isEdit"> {{user.acacutoff}}</div></td>
+                        <div *ngIf="!user.isEdit"> {{user.acacutoff}}</div>
+                    </td>
 
                     <td style="width: 15%;" class="text-center">
                         <div *ngIf="user.isEdit">
@@ -137,6 +148,180 @@
 
 
 
+            </tbody>
+        </table>
+    </div>
+    <!-- horizontal table -->
+    <div class="col-6 table-responsive" *ngIf="horizontal">
+        <table class="table  table-striped table-bordered table-hover sticky horizontal_table"
+            *ngFor="let user of usersArray">
+            <thead>
+                <tr>
+                    <th>Columns</th>
+                    <th> {{ user.admissionNo }}</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>id</th>
+                    <td>{{user.id}}</td>
+                </tr>
+                <tr>
+                    <th>admissionNo</th>
+                    <td>
+                        {{user.admissionNo}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>applyfor</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.applyfor">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.applyfor}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>hscregno</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.hscregno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.hscregno}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>hscmarkno</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.hscmarkno">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.hscmarkno}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>hscin</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.hscin">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.hscin}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>category</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.category">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.category}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>acasub1</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.acasub1">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.acasub1}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>acasub2</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.acasub2">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.acasub2}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>acasub3</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.acasub3">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.acasub3}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>acasub4</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.acasub4">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.acasub4}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>acasub5</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.acasub5">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.acasub5}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>acasub6n</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="text" [(ngModel)]="user.acasub6n">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.acasub6n}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>acasub6</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.acasub6">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.acasub6}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>acatot</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.acatot">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.acatot}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>acapcm</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.acapcm">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.acapcm}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>acacutoff</th>
+                    <td>
+                        <div *ngIf="user.isEdit">
+                            <input type="number" [(ngModel)]="user.acacutoff">
+                        </div>
+                        <div *ngIf="!user.isEdit"> {{user.acacutoff}}</div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th  class="last_row">Action</th>
+                    <td style="width: 15%;" class="text-center">
+                        <div *ngIf="user.isEdit">
+                            <button class="btn btn-sm btn-success" (click)="onUpdateData(user)">Update</button>
+                            <button class="btn btn-sm btn-danger" (click)="user.isEdit = false">Cancel</button>
+                        </div>
+                        <div *ngIf="!user.isEdit">
+                            <button class="btn-sm btn btn-success" (click)="onEdit(user)">Edit</button>
+                            <button class="btn-sm btn btn-secondary">Print</button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
