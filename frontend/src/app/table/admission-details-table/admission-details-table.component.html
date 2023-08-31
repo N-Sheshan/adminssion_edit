@@ -1,7 +1,7 @@
 <div class="row">
     <div class="filter">
         <form>
-            <input type="number" name="aader" id="" [(ngModel)]="aadhar" placeholder="Enter the Aadhar_No" required>
+            <input type="text" name="aader" id="" [(ngModel)]="aadhar" placeholder="Enter the Aadhar_No" required>
             <button type="submit" (click)="loadUser()">Search</button>
         </form>
 
@@ -58,7 +58,7 @@
                     <th>sscltot</th>
                     <th>sslcout</th>
 
-                    <!-- <th>Action</th> -->
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -331,19 +331,16 @@
                         </div>
                         <div *ngIf="!user.isEdit"> {{user.sslcout}}</div>
                     </td>
-                    <!-- <td style="width: 15%;" class="text-center">
+                    <td style="width: 15%;" class="text-center">
                         <div *ngIf="user.isEdit">
                             <button class="btn btn-sm btn-success" (click)="onUpdateData(user)">Update</button>
                             <button class="btn btn-sm btn-danger" (click)="user.isEdit = false">Cancel</button>
                         </div>
                         <div *ngIf="!user.isEdit">
-                            <button class="btn-sm btn btn-success" (click)="onEdit(user)">Edit</button>
+                            <button class="btn-sm btn btn-success" (click)="showRowContent(user)">Edit</button>
                             <button class="btn-sm btn btn-secondary">Print</button>
                         </div>
-
-                    </td> -->
-
-
+                    </td>
                 </tr>
 
 

@@ -21,7 +21,8 @@ button, input, optgroup, select, textarea {
     /* font-size: inherit; */
     line-height: inherit;
     font-size: large;
-    color: black;
+    /* color: black; */
+    color: white;
     font-weight: 500;
 }
 .filter form input{
@@ -100,4 +101,8 @@ button{
      color: white;
     text-align: center;
     background-color: #000000bd; 
+}.vertical_table th:last-child,.vertical_table td:last-child{
+    position: sticky;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.747);
 }

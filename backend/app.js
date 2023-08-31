@@ -22,6 +22,51 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 5
 // mysql
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // GET Method all data's {
+// this api will return full database
+app.get('/all_tables', (req, res) => {
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.error('Error getting database connection:', err);
+            res.status(500).json({ error: 'Database error' });
+            return;
+        }
+        
+        connection.query('SHOW TABLES', (err, tables) => {
+            if (err) {
+                connection.release();
+                console.error('Error retrieving tables:', err);
+                res.status(500).json({ error: 'Database error' });
+                return;
+            }
+
+            const tableNames = tables.map(table => Object.values(table)[0]);
+            const queryPromises = tableNames.map(tableName => {
+                return new Promise((resolve, reject) => {
+                    connection.query(`SELECT * FROM ${tableName}`, (err, tableData) => {
+                        if (err) {
+                            reject(err);
+                            return;
+                        }
+                        resolve({ [tableName]: tableData });
+                    });
+                });
+            });
+
+            Promise.all(queryPromises)
+                .then(results => {
+                    const responseData = results.reduce((acc, result) => ({ ...acc, ...result }), {});
+                    res.json(responseData);
+                    connection.release();
+                })
+                .catch(error => {
+                    console.error('Error querying tables:', error);
+                    res.status(500).json({ error: 'Database error' });
+                    connection.release();
+                });
+        });
+    });
+});
+
 // this function to get the data from student_master table
 app.get("/student_master", (req, res) => {
     pool.getConnection((err, result) => {
@@ -101,15 +146,17 @@ app.get("/hsc_voc", (req, res) => {
     })
 })
 
+
 // } end here
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // get specfic element{
 // getting the element using id
 app.get('/:id', (req, res) => {
+    
     pool.getConnection((err, result) => {
         if (err) throw err
-        result.query('SELECT * FROM student_master WHERE aadhaarno = ?', [req.params.id], (err, rows) => {
+        result.query('SELECT * FROM student_master WHERE name  LIKE ? OR aadhaarno  LIKE ? OR admissionNo  LIKE ?', [req.params.id+"%","%"+req.params.id+"%","%"+req.params.id], (err, rows) => {
             result.release()
             if (!err) {
                 res.send(rows)
@@ -124,10 +171,11 @@ app.get('/:id', (req, res) => {
 app.get('/additional_info/:id', (req, res) => {
     pool.getConnection((err, result) => {
         if (err) throw err
-        result.query('SELECT * FROM additional_info WHERE admissionNo =(select admissionNo from student_master where aadhaarno = ?)', [req.params.id], (err, rows) => {
+        result.query('SELECT * FROM additional_info WHERE admissionNo IN (select admissionNo from student_master where name  LIKE ? OR aadhaarno  LIKE ? OR admissionNo  LIKE ?);', [req.params.id+"%","%"+req.params.id+"%","%"+req.params.id+"%"], (err, rows) => {
             result.release()
             if (!err) {
                 res.send(rows)
+                
             } else {
                 console.log(err)
             }
@@ -140,7 +188,7 @@ app.get('/admission_details/:id', (req, res) => {
     pool.getConnection((err, result) => {
         if (err) throw err
 
-        result.query('SELECT * FROM admission_details WHERE admissionNo =(select admissionNo from student_master where aadhaarno = ?)', [req.params.id], (err, rows) => {
+        result.query('SELECT * FROM admission_details WHERE admissionNo IN (select admissionNo from student_master where name  LIKE ? OR aadhaarno  LIKE ? OR admissionNo  LIKE ?);', [req.params.id+"%","%"+req.params.id+"%","%"+req.params.id+"%"], (err, rows) => {
             result.release()
             if (!err) {
                 res.send(rows)
@@ -154,7 +202,7 @@ app.get('/admission_details/:id', (req, res) => {
 app.get('/fg_master/:id', (req, res) => {
     pool.getConnection((err, result) => {
         if (err) throw err
-        result.query('SELECT * FROM fg_master WHERE admissionNo =(select admissionNo from student_master where aadhaarno = ?)', [req.params.id], (err, rows) => {
+        result.query('SELECT * FROM fg_master WHERE admissionNo IN (select admissionNo from student_master where name  LIKE ? OR aadhaarno  LIKE ? OR admissionNo  LIKE ?);',  [req.params.id+"%","%"+req.params.id+"%","%"+req.params.id+"%"], (err, rows) => {
             result.release()
             if (!err) {
                 res.send(rows)
@@ -169,7 +217,7 @@ app.get('/fg_master/:id', (req, res) => {
 app.get('/hsc_aca/:id', (req, res) => {
     pool.getConnection((err, result) => {
         if (err) throw err
-        result.query('SELECT * FROM hsc_aca WHERE admissionNo =(select admissionNo from student_master where aadhaarno = ?)', [req.params.id], (err, rows) => {
+        result.query('SELECT * FROM hsc_aca WHERE admissionNo IN (select admissionNo from student_master where name  LIKE ? OR aadhaarno  LIKE ? OR admissionNo  LIKE ?);', [req.params.id+"%","%"+req.params.id+"%","%"+req.params.id+"%"], (err, rows) => {
             result.release()
             if (!err) {
                 res.send(rows)
@@ -185,7 +233,7 @@ app.get(`/hsc_voc/:id`, (req, res) => {
     const searchString = req.params.id;
     pool.getConnection((err, result) => {
         if (err) throw err
-        result.query('SELECT * FROM hsc_voc WHERE admissionNo =(select admissionNo from student_master where aadhaarno = ?)', [searchString], (err, rows) => {
+        result.query('SELECT * FROM hsc_voc WHERE admissionNo IN (select admissionNo from student_master where name  LIKE ? OR aadhaarno  LIKE ? OR admissionNo  LIKE ?);',  [req.params.id+"%","%"+req.params.id+"%","%"+req.params.id+"%"], (err, rows) => {
             result.release()
             if (!err) {
                 res.send(rows)

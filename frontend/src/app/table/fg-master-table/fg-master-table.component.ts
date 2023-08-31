@@ -41,23 +41,32 @@ export class FgMasterTableComponent implements OnInit {
   }
 
   loadUser() {
-   
-
+    let lengths = 0; // Initialize lengths with a default value
+    console.log(this.aadhar.toUpperCase());
+    
     this.http.get(`${url}fg_master/${this.aadhar}`).subscribe(
       (user: any) => {
         this.usersArray = user;
+        console.log(user)
+        lengths = Object.keys(user).length;
+        // Move the conditional logic here to ensure synchronization
+        if (lengths !== 1) {
+          console.log("inside the if " + lengths);
+          this.vertical = true;
+          this.horizontal = false;
+          this.inserts=false
+        } else {
+          console.log("from else statement " + lengths);
+          this.vertical = false;
+          this.horizontal = true;
+          this.inserts=false
+        }
       },
       (error) => {
         console.error('Error fetching user data:', error);
       }
     );
-    if (this.aadhar != null){ 
-      this.vertical=false;
-      this.allvalue=false
-      this.horizontal=true;
-      this.inserts=false;
-      }
-  }
+}
 
   onEdit(userObj:any){
     this.usersArray.forEach(element=>{
@@ -123,5 +132,19 @@ export class FgMasterTableComponent implements OnInit {
     }
    
   };
+
+ 
+  onDateChange(newDate: string, userObj: any): void {
+    userObj.dob = new Date(newDate);
+  }
+
+  showRowContent(row :any) {
+    this.horizontal=true;
+    this.vertical=false
+    this.inserts=false
+    this.allvalue=false;
+    this.usersArray=[row]
+  }
+
 
 }

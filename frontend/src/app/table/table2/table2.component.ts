@@ -32,20 +32,33 @@ export class Table2Component implements OnInit {
   this.horizontal=false;
   }
 
+  
   loadUser() {
-
-    this.http.get(`${url}additional_info/${parseInt(this.aadhar)}`).subscribe(
+    let lengths = 0; // Initialize lengths with a default value
+    console.log(this.aadhar.toUpperCase());
+    
+    this.http.get(`${url}additional_info/${this.aadhar}`).subscribe(
       (user: any) => {
         this.usersArray = user;
+        console.log(user)
+        lengths = Object.keys(user).length;
+        // Move the conditional logic here to ensure synchronization
+        if (lengths !== 1) {
+          console.log("inside the if " + lengths);
+          this.vertical = true;
+          this.horizontal = false;
+        } else {
+          console.log("from else statement " + lengths);
+          this.vertical = false;
+          this.horizontal = true;
+        }
       },
       (error) => {
         console.error('Error fetching user data:', error);
       }
     );
-    if (this.aadhar != null){ 
-      this.vertical=false;
-      this.horizontal=true;}
-  }
+}
+  
 
   onEdit(userObj:any){
     this.usersArray.forEach(element=>{
@@ -75,6 +88,16 @@ export class Table2Component implements OnInit {
 
   getaadhar(){
     console.log(this.aadhar)
+  }
+  onDateChange(newDate: string, userObj: any): void {
+    userObj.dob = new Date(newDate);
+  }
+
+  showRowContent(row :any) {
+    this.horizontal=true;
+    this.vertical=false
+    this.usersArray=[row]
+
   }
 
 
