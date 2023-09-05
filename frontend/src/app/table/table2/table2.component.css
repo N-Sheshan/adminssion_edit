@@ -21,8 +21,8 @@ button, input, optgroup, select, textarea {
     /* font-size: inherit; */
     line-height: inherit;
     font-size: large;
-    /* color: black; */
-    color: white;
+    color: black;
+    /* color: white; */
     font-weight: 500;
 }
 .filter form input{

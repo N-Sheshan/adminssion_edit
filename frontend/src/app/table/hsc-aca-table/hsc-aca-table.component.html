@@ -1,7 +1,7 @@
 <div class="row">
     <div class="filter">
         <form>
-            <input type="text" name="aader" id="" [(ngModel)]="aadhar" placeholder="Enter the Aadhar_No" required>
+            <input type="text" name="aader" id="" [(ngModel)]="aadhar" placeholder="Enter the Details" required>
             <button type="submit" (click)="loadUser()">Search</button>
         </form>
 
@@ -152,7 +152,7 @@
         </table>
     </div>
     <!-- horizontal table -->
-    <div class="col-6 table-responsive" *ngIf="horizontal">
+    <div class="col-7 table-responsive" *ngIf="horizontal">
         <table class="table  table-striped table-bordered table-hover sticky horizontal_table"
             *ngFor="let user of usersArray">
             <thead>

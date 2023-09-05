@@ -38,8 +38,17 @@ app.get('/all_tables', (req, res) => {
                 res.status(500).json({ error: 'Database error' });
                 return;
             }
-
-            const tableNames = tables.map(table => Object.values(table)[0]);
+            let table=tables.map(table => Object.values(table)[0])
+            for (let i = 0; i < table.length; i++) {
+                if (table[i] === 'office_edit') {
+                    let spliced = table.splice(i, 1);
+                }
+                if (table[i] === 'users') {
+                    let spliced = table.splice(i, 1);
+                }
+            }
+            console.log(table)
+            const tableNames = table;
             const queryPromises = tableNames.map(tableName => {
                 return new Promise((resolve, reject) => {
                     connection.query(`SELECT * FROM ${tableName}`, (err, tableData) => {
@@ -400,7 +409,7 @@ app.post('/api/login', async (req, res) => {
           return;
         }
   
-        const query = 'SELECT * FROM sample_user WHERE email = ? AND password = ? ';
+        const query = 'SELECT * FROM office_edit WHERE email = ? AND password = ? ';
         connection.query(query, [email,password], (err, results) => {
           connection.release();
   

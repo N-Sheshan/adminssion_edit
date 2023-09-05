@@ -4,8 +4,8 @@ import { elementAt } from 'rxjs';
 
 
 // import { url } from '../../../environments/environment';
-// const  url = `http://172.16.1.5:3000/`;
-const  url = `http://172.16.71.2:3000/`;
+const  url = `http://172.16.1.5:3000/`;
+// const  url = `http://172.16.71.2:3000/`;
 @Component({
   selector: 'app-table1',
   templateUrl: './table1.component.html',

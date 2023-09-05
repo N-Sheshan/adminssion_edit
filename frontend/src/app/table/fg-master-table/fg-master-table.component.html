@@ -1,7 +1,7 @@
 <div class="row">
     <div class="filter">
         <form>
-            <input type="text" name="aader" id="" [(ngModel)]="aadhar" placeholder="  Enter  the  admissionNo" required>
+            <input type="text" name="aader" id="" [(ngModel)]="aadhar" placeholder="  Enter  the  Details" required>
             <button type="submit" (click)="loadUser()">Search</button>
         </form>
 
@@ -30,7 +30,7 @@
                         {{user.admissionNo}}
                     <td>
                         <div *ngIf="user.isEdit">
-                            <input type="number" [(ngModel)]="user.year">
+                            <input type="text" [(ngModel)]="user.year">
                         </div>
                         <div *ngIf="!user.isEdit"> {{user.year}}</div>
                     </td>
@@ -75,7 +75,7 @@
                   <tr>
                     <th>admissionNo</th>
                     <td>
-                        <input type="number" placeholder="Enter the admissionNo"[(ngModel)]="insert_value.admissionNo"></td>
+                        <input type="text" placeholder="Enter the admissionNo"[(ngModel)]="insert_value.admissionNo"></td>
                  
                 </tr>
                 <tr>
@@ -129,7 +129,7 @@
                     <th>year</th>
                     <td>
                         <div *ngIf="user.isEdit">
-                            <input type="number" [(ngModel)]="user.year">
+                            <input type="text" [(ngModel)]="user.year">
                         </div>
                         <div *ngIf="!user.isEdit"> {{user.year}}</div>
                     </td>
@@ -158,7 +158,7 @@
                     <td style="width: 15%;" class="text-center">
                         <div *ngIf="user.isEdit">
                             <button class="btn btn-sm btn-success" (click)="onUpdateData(user)">Update</button>
-                            <button class="btn btn-sm btn-danger">Cancel</button>
+                            <button class="btn btn-sm btn-danger" (click)="user.isEdit = false">Cancel</button>
                         </div>
                         <div *ngIf="!user.isEdit">
                             <button class="btn-sm btn btn-success" (click)="onEdit(user)">Edit</button>

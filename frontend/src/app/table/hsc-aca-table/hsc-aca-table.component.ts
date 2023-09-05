@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 // import { url } from '../../../environments/environment';
-// const  url = `http://172.16.1.5:3000/`;
-const  url = `http://172.16.71.2:3000/`;
+const  url = `http://172.16.1.5:3000/`;
+// const  url = `http://172.16.71.2:3000/`;
 
 @Component({
   selector: 'app-hsc-aca-table',
